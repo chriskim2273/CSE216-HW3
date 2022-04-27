@@ -7,7 +7,7 @@ public class Main {
     public static void testBijectionGroup(){
         Set<Integer> a_few = Stream.of(1,2,3).collect(Collectors.toSet());
 // you have to figure out the data type in the line below
-        List<BijectionGroup.Bijection> bijections = BijectionGroup.bijectionsOf(a_few);
+        List<BijectionGroup.Bijection<Integer,Integer>> bijections = BijectionGroup.bijectionsOf(a_few);
         bijections.forEach(aBijection -> {
             a_few.forEach(n -> System.out.printf("%d --> %d; ", n, aBijection.apply(n)));
             System.out.println();
@@ -19,9 +19,9 @@ public class Main {
         System.out.println();
 
         Group<BijectionGroup.Bijection<Integer,Integer>> g = BijectionGroup.bijectionGroup(a_few);
-        BijectionGroup.Bijection f1 = BijectionGroup.bijectionsOf(a_few).stream().findFirst().get();
-        BijectionGroup.Bijection f2 = g.inverseOf(f1);
-        BijectionGroup.Bijection id = g.identity();
+        BijectionGroup.Bijection<Integer,Integer> f1 = BijectionGroup.bijectionsOf(a_few).stream().findFirst().get();
+        BijectionGroup.Bijection<Integer,Integer> f2 = g.inverseOf(f1);
+        BijectionGroup.Bijection<Integer,Integer> id = g.identity();
 
         a_few.forEach(n -> System.out.printf("%d --> %d; ",n, f1.apply(n)));
         System.out.println();
@@ -44,7 +44,7 @@ public class Main {
     public static void testSimpleUtils(){
         ArrayList<Integer> al = new ArrayList<>();
         for(int i = 10; i >= 1; i--){
-            al.add(new Integer(i));
+            al.add(i);
         }
         System.out.println("MIN: " + SimpleUtils.least(al, true));
 

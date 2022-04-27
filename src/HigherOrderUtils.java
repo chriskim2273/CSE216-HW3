@@ -46,7 +46,7 @@ public class HigherOrderUtils{
         @Override
         public Double apply(Double o, Double o2) {
             if(o2 == 0.0)
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("Attempting to divide by zero.");
             if(o == 0.0)
                 return 0.0;
 
@@ -84,7 +84,7 @@ public class HigherOrderUtils{
      */
     public static <T> T zip(List<T> args, List<? extends BiFunction<T, T, T>> bifunctions){
         if(bifunctions.size() != args.size()-1)
-            throw new IllegalArgumentException("Joe");
+            throw new IllegalArgumentException("Arguments and Bifuctions do not match.");
         if(args.size() == 1)
             return args.get(0);
         if(args.isEmpty())
