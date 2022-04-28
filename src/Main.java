@@ -22,12 +22,16 @@ public class Main {
         BijectionGroup.Bijection<Integer,Integer> f1 = BijectionGroup.bijectionsOf(a_few).stream().findFirst().get();
         BijectionGroup.Bijection<Integer,Integer> f2 = g.inverseOf(f1);
         BijectionGroup.Bijection<Integer,Integer> id = g.identity();
+        BijectionGroup.Bijection<Integer,Integer> inversecomp = g.binaryOperation(f1,f2);
+
 
         a_few.forEach(n -> System.out.printf("%d --> %d; ",n, f1.apply(n)));
         System.out.println();
         a_few.forEach(n -> System.out.printf("%d --> %d; ",n, f2.apply(n)));
         System.out.println();
         a_few.forEach(n -> System.out.printf("%d --> %d; ",n, id.apply(n)));
+        System.out.println();
+        a_few.forEach(n -> System.out.printf("%d --> %d; ",n, inversecomp.apply(n)));
     }
     public static void testHigherOrderUtils(){
         List<Double> numbers = Arrays.asList(-0.5, 2d, 3d, 0d, 4d); // documentation example

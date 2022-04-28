@@ -13,7 +13,7 @@ public class HigherOrderUtils{
 
         @Override
         public Double apply(Double o, Double o2) {
-            return (o-o2);
+            return (o+o2);
         }
 
     };
@@ -33,7 +33,7 @@ public class HigherOrderUtils{
 
         @Override
         public Double apply(Double o, Double o2) {
-            return (o + o2);
+            return (o * o2);
         }
 
         @Override

@@ -32,6 +32,10 @@ public class BijectionGroup{
 
     //Finds all bijections of a finite set.
     public static <T> List<Bijection<T,T>> bijectionsOf(Set<T> domain) {
+        //Is the size of the domain ever zero? Done just in case... Maybe throw error?
+        if(domain.size() == 0)
+            return new ArrayList<>();
+
         List<T> domainList = new ArrayList<>(domain);
         List<Bijection<T,T>> listOfBijections = new ArrayList<>();
         List<T> tempList = new ArrayList<>(domainList);
@@ -86,8 +90,8 @@ public class BijectionGroup{
             @Override
             public Bijection<T, T> binaryOperation(Bijection<T, T> one, Bijection<T, T> other) {
                 Bijection<T, T> inverse = new Bijection<T, T>() {
-                    final List<T> domain_one = one.getDomain();
-                    final List<T> range_one = one.getRange();
+                    final List<T> domain_one = other.getDomain();
+                    final List<T> range_one = other.getRange();
                     final List<T> domain_two = one.getDomain();
                     final List<T> range_two = one.getRange();
 
